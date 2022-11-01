@@ -11,8 +11,8 @@ import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
     /** Creates a new ExampleSubsystem. */
-    WPI_TalonFX talonLeft = new WPI_TalonFX(Constants.Shooter.left_shooter_motor);
-    WPI_TalonFX talonRight = new WPI_TalonFX(Constants.Shooter.right_shooter_motor);
+    private WPI_TalonFX talonLeft = new WPI_TalonFX(Constants.Shooter.left_shooter_motor); 
+    private WPI_TalonFX talonRight = new WPI_TalonFX(Constants.Shooter.right_shooter_motor);
 
     public Shooter() {
         talonLeft.setInverted(false);

@@ -17,10 +17,10 @@ public class UpperShoot extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public UpperShoot(Shooter subsystem) {
-    Shooter = subsystem;
+  public UpperShoot(Shooter Shooter) {
+    this.Shooter = Shooter;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(Shooter);
   }
 
   // Called when the command is initially scheduled.
