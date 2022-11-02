@@ -20,9 +20,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Shooter m_Shooter = new Shooter();
+  private final Shooter shooter = new Shooter();
 
-  private final UpperShoot m_UpperShoot = new UpperShoot(m_Shooter);
+  private final UpperShoot upperShoot = new UpperShoot(shooter);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -39,7 +39,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     XboxController controller = new XboxController(0); //create the controller w/the port
     JoystickButton A = new JoystickButton(controller, Button.kA.value); //button map
-    A.whenPressed(m_UpperShoot); //when A is pressed run the command
+    A.whenHeld(upperShoot); //when A is pressed run the command
   }
 
   /**
@@ -49,6 +49,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_UpperShoot;
+    return null;
   }
 }

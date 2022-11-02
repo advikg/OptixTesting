@@ -8,7 +8,7 @@ import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class UpperShoot extends CommandBase {
+public class LowerShoot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Shooter shooter;
 
@@ -17,7 +17,7 @@ public class UpperShoot extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public UpperShoot(Shooter shooter) {
+  public LowerShoot(Shooter shooter) {
     this.shooter = shooter;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooter);
@@ -30,7 +30,7 @@ public class UpperShoot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      shooter.set_speed(0.7);
+      shooter.set_speed(0.2);
   }
 
   // Called once the command ends or is interrupted.

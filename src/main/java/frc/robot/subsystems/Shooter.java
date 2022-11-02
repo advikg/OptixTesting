@@ -14,15 +14,17 @@ public class Shooter extends SubsystemBase {
     private WPI_TalonFX talonLeft = new WPI_TalonFX(Constants.Shooter.left_shooter_motor); 
     private WPI_TalonFX talonRight = new WPI_TalonFX(Constants.Shooter.right_shooter_motor);
 
+    private MotorControllerGroup shooter = new MotorControllerGroup(talonLeft, talonRight);
+
     public Shooter() {
         talonLeft.setInverted(false);
         talonRight.setInverted(true);
     }
 
-    private MotorControllerGroup shooter = new MotorControllerGroup(talonLeft, talonRight);
 
     public void set_speed (double speed) {
         shooter.set(speed);
     }
+    // methodw are camel cased
 
 }
