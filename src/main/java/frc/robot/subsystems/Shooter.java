@@ -17,8 +17,8 @@ public class Shooter extends SubsystemBase {
     private MotorControllerGroup shooter = new MotorControllerGroup(talonLeft, talonRight);
 
     public Shooter() {
-        talonLeft.setInverted(false);
-        talonRight.setInverted(true);
+        talonLeft.setInverted(true);
+        talonRight.setInverted(false);
     }
 
 
