@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.UpperShoot;
 import frc.robot.commands.LowerShoot;
 import frc.robot.subsystems.Shooter;
+import frc.robot.commands.TankDrive;
+import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -26,6 +28,7 @@ public class RobotContainer {
 
   private final UpperShoot upperShoot = new UpperShoot(shooter);
   private final LowerShoot lowerShoot = new LowerShoot(shooter);
+  private final Drivetrain driveTrain = new Drivetrain();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -45,6 +48,8 @@ public class RobotContainer {
     A.whenHeld(upperShoot); //when A is pressed run the command
     JoystickButton B = new JoystickButton(controller, Button.kB.value);
     B.whenHeld(lowerShoot);
+    XboxController pilot = new XboxController(0);
+    driveTrain.setDefaultCommand(new TankDrive(driveTrain, pilot::getRightY, pilot::getLeftY));
   }
 
   /**
