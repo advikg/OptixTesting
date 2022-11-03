@@ -5,10 +5,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.UpperShoot;
+import frc.robot.commands.LowerShoot;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -20,9 +22,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_subsystem = new ExampleSubsystem();
+  private final Shooter shooter = new Shooter();
 
-  private final ExampleCommand m_autonomousCommand = new ExampleCommand(m_subsystem);
+  private final UpperShoot upperShoot = new UpperShoot(shooter);
+  private final LowerShoot lowerShoot = new LowerShoot(shooter);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -37,7 +40,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    
+    XboxController controller = new XboxController(0); //create the controller w/the port
+    JoystickButton A = new JoystickButton(controller, Button.kA.value); //button map
+    A.whenHeld(upperShoot); //when A is pressed run the command
+    JoystickButton B = new JoystickButton(controller, Button.kB.value);
+    B.whenHeld(lowerShoot);
   }
 
   /**
@@ -47,6 +54,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autonomousCommand;
+    return null;
   }
 }
